@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -Isrc -Iinc
 
-main: src/main.o src/console.o
-	$(CC) $(CFLAGS) src/main.o src/console.o -o main
+main: src/main.o src/console.o src/objects.o
+	$(CC) $(CFLAGS) src/main.o src/console.o src/objects.o -o main
 
 src/main.o: src/main.c inc/console.h
 	$(CC) $(CFLAGS) -c src/main.c -o src/main.o
@@ -10,6 +10,8 @@ src/main.o: src/main.c inc/console.h
 src/console.o: src/console.c inc/console.h 
 	$(CC) $(CFLAGS) -c src/console.c -o src/console.o
 
+src/objects.o: src/objects.c inc/objects.h
+	$(CC) $(CFLAGS) -c src/objects.c -o src/objects.o
 
 clean:
 	rm -f main
