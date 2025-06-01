@@ -2,7 +2,11 @@
 #include "console.h"
 
 void gotoxy(int x, int y){
-	printf("\033[%d;%dH", x, y);
+	printf("\033[%d;%dH", y, x);
+}
+
+void clrscr(){
+	printf("\033[2J");
 }
 
 void bg_color(int color){
@@ -31,5 +35,19 @@ void bg_color(int color){
 		case WHITE:
 			printf("\033[47m");
 			break;
+	}
+}
+
+void draw_box(int x_corner, int y_corner, int sidelength){
+	for(int i = x_corner; i <= x_corner + sidelength; i++){
+		gotoxy(i, y_corner);
+		printf("M");
+		gotoxy(i, y_corner+sidelength);
+		printf("M");
+
+		gotoxy(x_corner, i);
+		printf("M");
+		gotoxy(x_corner+sidelength, i);
+		printf("M");
 	}
 }

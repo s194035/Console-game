@@ -13,5 +13,6 @@
 
 void gotoxy(int, int);
 void bg_color(int);
-
+void clrscr();
+void draw_box(int, int, int);
 #endif /*INCLUDE_CONSOLE_H */
